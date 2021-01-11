@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-百度导航栏</title>
+    <link rel="stylesheet" href="./test.css">
+</head>
+<body>
+    <div id="app">
+        <div class="left">
+            <a href="#">{{news}}</a>
+            <a href="#">{{link}}</a>
+            <a href="#">{{map}}</a>
+            <a href="#">{{video}}</a>
+            <a href="#">{{tieba}}</a>
+            <a href="#">{{xues}}</a>
+            <div class="more_box">
+                <a href="#">{{more}}</a>
+                div.
+            </div>
+        </div>
+        <div class="right">
+            <div class="box"  v-on:mouseover="mouseover" v-on:mouseout="mouseout">
+                <a href="#">{{sel}}</a>
+                <ul class="list">
+                    <li><a href="#">{{arr[0]}}</a></li>
+                    <li><a href="#">{{arr[1]}}</a></li>
+                    <li><a href="#">{{arr[2]}}</a></li>
+                    <li><a href="#">{{arr[3]}}</a></li>
+                    <li><a href="#">{{arr[4]}}</a></li>
+                </ul>
+            </div>
+            <a href="#">{{login}}</a>
+        </div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                news:"新闻",
+                link:"hao123",
+                map:"地图",
+                video:"视频",
+                tieba:"贴吧",
+                xues:"学术",
+                more:"更多",
+                sel:"设置",
+                login:"登录",
+                arr:["搜索设置","高级搜索","开启预测","隐私设置","关闭热搜"]
+            },
+            methods:{
+                mouseover(){
+                    var ul_list = document.querySelector(".list");
+                    ul_list.style.display="block";
+                },
+                mouseout(){
+                    var ul_list = document.querySelector(".list");
+                    ul_list.style.display="";
+                }
+            }
+        })
+    </script>
+</body>
+</html>
