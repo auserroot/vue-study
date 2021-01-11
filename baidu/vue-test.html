@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-百度导航栏</title>
+    <link rel="stylesheet" href="./test.css">
+</head>
+<body>
+    <div id="app">
+        <div class="left">
+            <a href="#">{{news}}</a>
+            <a href="#">{{link}}</a>
+            <a href="#">{{map}}</a>
+            <a href="#">{{video}}</a>
+            <a href="#">{{tieba}}</a>
+            <a href="#">{{xues}}</a>
+            <div class="more"  @mouseover="over" @mouseout="out">
+                <a href="#">{{more}}</a>
+                <ul class="_box" v-show="see">
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/baiduyun@2x-e0be79e69e.png" alt=""><a href="#">{{arr2[0]}}</a></li>
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/zhidao@2x-e9b427ecc4.png" alt=""><a href="#">{{arr2[1]}}</a></li>
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/baike@2x-1fe3db7fa6.png" alt=""><a href="#">{{arr2[2]}}</a></li>
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/tupian@2x-482fc011fc.png" alt=""><a href="#">{{arr2[3]}}</a></li>
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/baobaozhidao@2x-af409f9dbe.png" alt=""><a href="#">{{arr2[4]}}</a></li>
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/wenku@2x-f3aba893c1.png" alt=""><a href="#">{{arr2[5]}}</a></li>
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/jingyan@2x-e53eac48cb.png" alt=""><a href="#">{{arr2[6]}}</a></li>
+                    <li><img src="https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/yinyue@2x-c18adacacb.png" alt=""><a href="#">{{arr2[7]}}</a></li>
+                    <p><a href="#">查看全部百度产品></a></p>                
+                </ul>
+            </div>
+          </div>
+         
+        <div class="right">
+            <div class="box"  v-on:mouseover="mouseover" v-on:mouseout="mouseout">
+                <a href="#">{{sel}}</a>
+                <ul class="list">
+                    <li><a href="#">{{arr[0]}}</a></li>
+                    <li><a href="#">{{arr[1]}}</a></li>
+                    <li><a href="#">{{arr[2]}}</a></li>
+                    <li><a href="#">{{arr[3]}}</a></li>
+                    <li><a href="#">{{arr[4]}}</a></li>
+                </ul>
+            </div>
+            <a href="#">{{login}}</a>
+        </div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                see:false,
+                news:"新闻",
+                link:"hao123",
+                map:"地图",
+                video:"视频",
+                tieba:"贴吧",
+                xues:"学术",
+                more:"更多",
+                sel:"设置",
+                login:"登录",
+                arr2:["网盘","知道","百科","图片","宝宝知道","经验","文库","音乐"],
+                arr:["搜索设置","高级搜索","开启预测","隐私设置","关闭热搜"]
+            },
+            methods:{
+                over(){
+                    this.see=true;
+                },
+                out(){
+                    this.see=false;
+                },
+                mouseover(){
+                    var ul_list = document.querySelector(".list");
+                    ul_list.style.display="block";
+                },
+                mouseout(){
+                    var ul_list = document.querySelector(".list");
+                    ul_list.style.display="";
+                }
+            }
+        })
+    </script>
+</body>
+</html>
