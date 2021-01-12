@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="./sys.css">
+</head>
+<body>
+    <div id="app">
+        <h1 v-text="tit"></h1>
+        <p>
+          <span v-text="idNum"></span>
+        <input type="text" placeholder="手机号" v-model="phoneNum">  
+        </p>
+        <p>
+            <input type="text" placeholder="请输入4位验证码" v-model="code">
+            <span v-text="sendCode"></span>
+        </p>
+        <button v-text="msg"></button>
+        
+        <p v-text="phoneNum"></p>
+        <p v-text="code"></p>
+    </div>
+    
+
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+        <script>
+            let v = new Vue({
+                el:"#app",
+                data:{
+                    tit:"手机号登陆/注册",
+                    idNum:"+86",
+                    phoneNum:"",
+                    code:"",
+                    sendCode:"发送验证码",
+                    msg:"确认"
+                }
+            })
+        </script>
+</body>
+</html>
+
