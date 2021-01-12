@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-百度导航栏</title>
+    <link rel="stylesheet" href="./test.css">
+</head>
+<body>
+    <div id="app">
+        <div class="left">
+            <a href="#" v-for="v in t" v-text="v.txt"></a>
+            <div class="more"  @mouseover="over" @mouseout="out">
+                <a href="#">{{more}}</a>
+                <ul class="_box" v-show="see">
+                    <li v-for="item in box"><img :src="item.url" alt=""><a href="#" v-text="item.txt"></a></li>
+                    <p><a href="#">查看全部百度产品></a></p>                
+                </ul>
+            </div>
+          </div>
+         
+        <div class="right">
+            <div class="box"  v-on:mouseover="mouseover" v-on:mouseout="mouseout">
+                <a href="#">{{sel}}</a>
+                <ul class="list">
+                    <li v-for="v in arr"><a href="#" v-text="v"></a></li>
+                </ul>
+            </div>
+            <a href="#">{{login}}</a>
+        </div>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                see: false,
+                more: "更多",
+                sel: "设置",
+                login: "登录",
+                t: [
+                    { txt: "新闻", },
+                    { txt: "hao123" },
+                    { txt: "地图" },
+                    { txt: "视频" },
+                    { txt: "贴吧" },
+                    { txt: "学术" }
+                ],
+                
+                box:[
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/baiduyun@2x-e0be79e69e.png",txt:"网盘"},
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/zhidao@2x-e9b427ecc4.png",txt:"知道"},
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/baike@2x-1fe3db7fa6.png",txt:"百科"},
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/tupian@2x-482fc011fc.png",txt:"图片"},
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/baobaozhidao@2x-af409f9dbe.png",txt:"宝宝知道"},
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/wenku@2x-f3aba893c1.png",txt:"经验"},
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/jingyan@2x-e53eac48cb.png",txt:"文库"},
+                    {url:"https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/topnav/yinyue@2x-c18adacacb.png",txt:"音乐"}
+                ],
+                arr:["搜索设置","高级搜索","开启预测","隐私设置","关闭热搜"]
+            },
+            methods:{
+                over(){
+                    this.see=true;
+                },
+                out(){
+                    this.see=false;
+                },
+                mouseover(){
+                    var ul_list = document.querySelector(".list");
+                    ul_list.style.display="block";
+                },
+                mouseout(){
+                    var ul_list = document.querySelector(".list");
+                    ul_list.style.display="";
+                }
+            }
+        })
+    </script>
+</body>
+</html>
