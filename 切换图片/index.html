@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>点击按钮切换图片</title>
+    <link rel="stylesheet" href="./sys.css">
 </head>
 <body>
     <div id="app">
@@ -15,11 +16,15 @@
         let v = new Vue({
             el:"#app",
             data:{
-                url:""
+                url:"./img/1.gif"
             },
             methods: {
                 next(){
-                  
+                    if(this.url=="./img/1.gif"){
+                        this.url="./img/2.gif";
+                    }else{
+                        this.url="./img/1.gif";
+                    }
                 }
             },
         })
