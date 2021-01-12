@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车数量的增加或减少</title>
+    <link rel="stylesheet" href="./system.css">
+</head>
+<body>
+    <div id="app">
+        <a href="#" @click="add">+</a>
+        <input type="text" :value="val">
+        <a href="#" @click="sub">-</a>
+    </div>
+
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        let v = new Vue({
+            el:"#app",
+            data:{
+                val:0,
+            },
+            methods: {
+                add(){
+                    // var inp = document.querySelector("input");
+                    // if(parseInt(inp.value)>=0){
+                    //     inp.value=parseInt(inp.value)+1;
+                    // }
+                    this.val+=1;
+                },
+                sub(){
+                    // var inp = document.querySelector("input");
+                    // if(parseInt(inp.value)>0){
+                    //     inp.value-=1;
+                    // }
+                    if(this.val>0){
+                        this.val-=1;
+                    }
+                }
+            },
+
+        })
+    </script>
+</body>
+</html>

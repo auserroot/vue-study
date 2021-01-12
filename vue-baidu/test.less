@@ -1,0 +1,119 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#app {
+  padding: 0 12px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  text-align: center;
+  line-height: 64px;
+  background: #fff;
+  .left {
+    position: relative;
+    width: 420px;
+    display: flex;
+    justify-content: space-around;
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a:hover{
+      color: rgb(49, 94, 251);
+    }
+    .more{
+      ._box{
+        position: absolute;
+        top: 66px;
+        left: 116px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 300px;
+        height: 220px;
+        border-radius: 12px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+        list-style: none;
+        margin-top: -10px;
+        padding-top: 16px;
+        // display: none;
+        
+        li{
+          width: 74px;
+          height: 80px;
+          line-height: 40px;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          img{
+            width: 40px;
+            height: 40px;
+            margin: 0 18px;
+          }
+          a{
+            color: #000;
+            text-decoration: none;
+          }
+          a:hover{
+            color: rgb(49, 94, 251);
+          }
+        }
+        p{
+          width: 100%;
+          height:40px;
+          line-height: 40px;
+          text-align: center;
+          a{
+            color: rgb(173, 149, 163);
+          }
+          a:hover{
+            color: rgb(49, 94, 251);
+          }
+        }
+      }
+    }
+  }
+ 
+  .right {
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+    .box{
+      width: 92px;
+      height: 236px;
+    a{
+      width: 90px;
+      color: #000;
+      text-decoration: none;
+    }
+    a:nth-child(1):hover{
+      color: rgb(49, 94, 251);
+    }
+    .list{
+      list-style: none;
+      width: 90px;
+      height: 170px;
+      border: 1px solid rgb(216, 216, 208);
+      border-radius: 12px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+      margin-top: -10px;
+      display: none;
+      li{
+        font-size: 14px;
+        line-height: 34px;
+      }
+    }
+  }
+    a:nth-child(2){
+      width: 50px;
+      height: 26px;
+      line-height: 26px;
+      color: #fff;
+      background: rgb(78, 113, 242);
+      border-radius: 5px;
+      margin-top: 18px;
+      text-decoration: none;
+    }
+  }
+}

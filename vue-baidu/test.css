@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#app {
+  padding: 0 12px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  text-align: center;
+  line-height: 64px;
+  background: #fff;
+}
+#app .left {
+  position: relative;
+  width: 420px;
+  display: flex;
+  justify-content: space-around;
+}
+#app .left a {
+  color: #000;
+  text-decoration: none;
+}
+#app .left a:hover {
+  color: #315efb;
+}
+#app .left .more ._box {
+  position: absolute;
+  top: 66px;
+  left: 116px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 220px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  list-style: none;
+  margin-top: -10px;
+  padding-top: 16px;
+}
+#app .left .more ._box li {
+  width: 74px;
+  height: 80px;
+  line-height: 40px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#app .left .more ._box li img {
+  width: 40px;
+  height: 40px;
+  margin: 0 18px;
+}
+#app .left .more ._box li a {
+  color: #000;
+  text-decoration: none;
+}
+#app .left .more ._box li a:hover {
+  color: #315efb;
+}
+#app .left .more ._box p {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+#app .left .more ._box p a {
+  color: #ad95a3;
+}
+#app .left .more ._box p a:hover {
+  color: #315efb;
+}
+#app .right {
+  display: flex;
+  justify-content: space-around;
+  width: 150px;
+}
+#app .right .box {
+  width: 92px;
+  height: 236px;
+}
+#app .right .box a {
+  width: 90px;
+  color: #000;
+  text-decoration: none;
+}
+#app .right .box a:nth-child(1):hover {
+  color: #315efb;
+}
+#app .right .box .list {
+  list-style: none;
+  width: 90px;
+  height: 170px;
+  border: 1px solid #d8d8d0;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  margin-top: -10px;
+  display: none;
+}
+#app .right .box .list li {
+  font-size: 14px;
+  line-height: 34px;
+}
+#app .right a:nth-child(2) {
+  width: 50px;
+  height: 26px;
+  line-height: 26px;
+  color: #fff;
+  background: #4e71f2;
+  border-radius: 5px;
+  margin-top: 18px;
+  text-decoration: none;
+}
