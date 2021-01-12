@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkbox,radio以及select</title>
+    <link rel="stylesheet" href="./sys.css">
+</head>
+<body>
+    <div id="app">
+        <div class="checkbox">
+            <input type="checkbox" value="US" v-model="checkboxs"  @change="change">美国<span v-text="msg"></span>
+            <input type="checkbox" value="CN" v-model="checkboxs"  @change="change">中国<span v-text="msg"></span>
+            <input type="checkbox" value="UK" v-model="checkboxs"  @change="change">英国<span v-text="msg"></span>
+            <P v-text="checkboxs"></P>
+        </div>
+        <div class="radio">
+            <input type="radio" name="country" value="US" v-model="ra">美国
+            <input type="radio" name="country" value="CN" v-model="ra">中国
+            <input type="radio" name="country" value="UK" v-model="ra">英国<span v-text="ra"></span>
+        </div>
+        <select name="" id="se" v-model="se">
+            <option value="US">美国</option>
+            <option value="CN">中国</option>
+            <option value="UK">英国</option>
+        </select><span v-text="se"></span>
+    </div>
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <script>
+        let v = new Vue({
+            el:"#app",
+            data:{
+                msg:true,
+                checkboxs:[],
+                ra:"UK",
+                se:"US"
+            },
+            // methods: {
+            //     change(e){
+            //         this.msg=!this.msg;
+            //     }
+            // },
+        })
+    </script>
+</body>
+</html>

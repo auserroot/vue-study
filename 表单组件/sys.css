@@ -1,0 +1,39 @@
+#app {
+  width: 500px;
+  height: 400px;
+  margin: 100px auto;
+}
+#app .checkbox {
+  width: 100%;
+  height: 50px;
+}
+#app .checkbox input {
+  width: auto;
+}
+#app .checkbox span {
+  display: inline-block;
+  width: 40px;
+}
+#app .checkbox P {
+  display: inline-block;
+  width: 200PX;
+}
+#app .radio {
+  width: 100%;
+  height: 50px;
+}
+#app .radio input {
+  width: auto;
+}
+#app .radio span {
+  display: inline-block;
+  width: 40px;
+  margin-left: 20px;
+}
+#app select option {
+  width: auto;
+}
+#app span {
+  display: inline-block;
+  width: 40px;
+}
