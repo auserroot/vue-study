@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./sys.css">
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <t-header></t-header>
+            <li>
+                <span v-for="apple in apples" v-text="apple"></span>
+                <p>
+                    <button @click="add">+</button>
+                    <input type="button" :value="apple_val">
+                    <button @click="sub">-</button>
+                </p>
+                <span></span>
+            </li>
+            <li>
+                <span v-for="pear in pears" v-text="pear"></span>
+                <p>
+                    <button @click="add">+</button>
+                    <input type="button" :value="pear_val">
+                    <button @click="sub">-</button>
+                </p>
+                <span></span>
+            </li>
+            <li>
+                <span v-for="banana in bananas" v-text="banana"></span>
+                <p>
+                    <button @click="add">+</button>
+                    <input type="button" :value="banana_val">
+                    <button @click="sub">-</button>
+                </p>
+                <span>{{}}</span>
+            </li>
+            <t-footer></t-footer>
+        </ul>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component("t-header", {
+            template:
+                `
+                <li>
+                    <span v-for="item in items" v-text="item"></span>
+                </li>
+            `,
+            data: function () {
+                return {
+                    items: ["编号", "名称", "单价", "数量", "总价"]
+                }
+            }
+        })
+
+        Vue.component("t-footer", {
+                template:
+                    `
+                        <li>
+                            <span v-text="msg"></span>
+                            <span>{{icon}}38</span>
+                        </li>
+                    `,
+
+                data: function () {
+                    return {
+                        msg: "总价:",
+                        icon: "￥"
+                    }
+
+                },
+            })
+        new Vue({
+            el: "#app",
+            data: {
+                apple_val:1,
+                pear_val:1,
+                banana_val:1,
+                apples: ["1", "apple", "3",],
+                pears:["2","pear","4"],
+                bananas:["3","banana","5"]
+            },
+                methods: {
+                    add(){
+                        if(this.apple_val){
+                            this.apple_val++;
+                        }else if(this.banana_val){
+                            this.banana_val++;
+                        }else{
+                            this.pear_val++;
+                        }
+                    },
+                    sub() {
+                        if (this.apple_val > 1) {
+                            this.apple_val--;
+                        } else if (this.banana_val > 1) {
+                            this.banana_val--;
+                        } else {
+                            this.pear_val--;
+                        }
+                    }
+                },
+        })
+    </script>
+</body>
+
+</html>

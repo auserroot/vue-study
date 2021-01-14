@@ -1,0 +1,54 @@
+#app {
+  width: 600px;
+  height: 360px;
+}
+#app ul {
+  list-style: none;
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 80px;
+}
+#app ul li {
+  text-align: center;
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+#app ul li span {
+  width: 80px;
+  height: 40px;
+}
+#app ul li p {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+#app ul li p button {
+  width: 40px;
+  height: 24px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,.4);
+  background: #fff;
+}
+#app ul li p input {
+  width: 80px;
+  height: 40px;
+  font-size: 30px;
+  border: none;
+  outline: none;
+  margin: -6px 10px 0;
+  background: #fff;
+}
+#app ul li:last-child span:nth-child(1){
+  width: 50%;
+  text-align: right;
+}
+#app ul li:last-child span:nth-child(2){
+  width: 50%;
+  text-align: left;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用组件的方法实现在心input中输入内容点击添加按钮可在arr后添加，点击删除可删除内容</title>
+    <link rel="stylesheet" href="./sys.css">
+</head>
+<body>
+    <div id="app">
+        <div class="box">
+            <input type="text" v-model="inputvalue" ><button @click="add">添加</button>
+            <ul>
+                <li v-for="item in list"><span v-text="item.txt" ></span> <button @click="del(item)">删除</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+
+            data: {
+                inputvalue: "",
+                list: [
+                    { txt: "吃饭"},
+                    { txt: "睡觉"},
+                    { txt: "打豆豆"},
+                ]
+            },
+            methods: {
+                add() {
+                    this.list.push({
+                        txt: this.inputvalue
+                    });
+                    this.inputvalue = ""
+                },
+                del(item) {
+                    this.list.splice(this.list.indexOf(item),1)
+                }
+
+            },
+        })
+    </script>
+</body>
+</html>

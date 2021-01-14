@@ -1,0 +1,42 @@
+div#app {
+  width: 500px;
+  height: 300px;
+  margin: 50px auto;
+}
+div#app div.box {
+  width: auto;
+  height: auto;
+}
+div#app div.box input {
+  height: 26px;
+  margin-right: 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+div#app div.box button {
+  width: 60px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  background: #dee5e3;
+}
+div#app div.box ul li {
+  margin: 10px;
+}
+div#app div.box ul li button {
+  width: 60px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  background: #dee5e3;
+}
