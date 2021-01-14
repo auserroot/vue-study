@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用组件的方法实现在心input中输入内容点击添加按钮可在arr后添加，点击删除可删除内容</title>
+    <link rel="stylesheet" href="./sys.css">
+</head>
+<body>
+    <div id="app">
+        <div class="box">
+            <input type="text" v-model="inputvalue" ><button @click="add">添加</button>
+            <ul>
+                <li v-for="(item,index) in list">
+                    <my-todo :todo="item" :index="index" @delfunc="delitem"></my-todo>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component("my-todo",{
+            props:{
+                todo:{
+                    default:""
+                },
+                index:{
+                    default:""
+                }
+            },
+            template:`
+                <div>
+                    <span v-text="todo" ></span> <button @click="del">删除</button>
+                </div>
+            `,
+            methods: {
+                del(){
+                    this.$emit("delfunc",this.index)
+                }
+            },
+        })
+        new Vue({
+            el: "#app",
+
+            data: {
+                inputvalue: "",
+                list: [ "吃饭", "睡觉", "打豆豆",]
+            },
+
+            
+            methods: {
+                add() {
+                    this.list.push(
+                        this.inputvalue
+                    );
+                    this.inputvalue = ""
+                },
+                delitem(index) {
+                    this.list.splice(index,1)
+                }
+
+            },
+        })
+    </script>
+</body>
+</html>
