@@ -1,15 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <input type="text" v-focus>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data:function(){
+    return{
+      msg:1
+    }
+  },
+  //自定义指令
+  directives:{
+    "focus":{
+      bain:function(el,binding,vnode){
+        console.log(el)
+        console.log(binding)
+        console.log(vnode)
+      },
+      inserted(el,binding,vnode){
+        console.log(el)
+        console.log(binding)
+        console.log(vnode)
+        el.focus();//聚焦事件
+      }
+    }
   }
 }
 </script>
