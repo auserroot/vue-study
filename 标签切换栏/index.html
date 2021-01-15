@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./sys.css">
+    <style>
+        .bg {
+            background: rgb(221, 221, 221);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button v-for="(item,index) in items" v-text="item.txt" :class="[{bg:currentTab === item.id}]" :key="index" @click="currentTab = item.id"></button>
+        <component :is="currentTabComponent"></component>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        Vue.component("tab-home", {
+            inject:["home"],
+            template:`
+                <h1 v-text="home"></h1>
+            `
+        })
+        Vue.component("tab-info", {
+            inject:["infomation"],
+            template:`
+                <h1 v-text="infomation"></h1>
+            `
+        })
+        Vue.component("tab-pro", {
+            inject:["product"],
+            template:`
+                <h1 v-text="product"></h1>
+            `
+        })
+        new Vue({
+                el: "#app",
+                provide: {
+                    home: "主页",
+                    infomation: "公司介绍",
+                    product: "产品介绍"
+                },
+                data:{
+                    currentTab:"home",
+                    items:[
+                        {id:"home",txt:"主页"},
+                        {id:"info",txt:"公司介绍"},
+                        {id:"pro",txt:"产品介绍"}
+                    ],
+                },
+                computed: {
+                currentTabComponent() {
+                    return "tab-" + this.currentTab;
+                }
+        } 
+            })
+    </script>
+</body>
+</html>

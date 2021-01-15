@@ -1,0 +1,23 @@
+
+#app{
+    width: 522px;
+    text-align: center;
+    font-size: 30px;
+}
+button{
+    width: 174px;
+    height: 46px;
+    font-size: 30px;
+    line-height: 46px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 9px rgb(221, 221, 221);
+    background: #fff;
+}
+
+h1{
+    text-align: center;
+    font-size: 30px;
+    text-align: left;
+}

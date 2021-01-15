@@ -36,7 +36,7 @@
   background: #fff;
 }
 #app ul li p input {
-  width: 80px;
+  width: 40px;
   height: 40px;
   font-size: 30px;
   border: none;
@@ -44,6 +44,7 @@
   margin: -6px 10px 0;
   background: #fff;
 }
+
 #app ul li:last-child span:nth-child(1){
   width: 50%;
   text-align: right;

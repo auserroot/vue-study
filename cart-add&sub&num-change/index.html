@@ -18,7 +18,7 @@
                 <span  v-text="item.price"></span>
                 <p>
                     <button @click="add(index)">+</button>
-                    <input type="button" :value="item.num">
+                    <input type="text"  v-model="item.num">
                     <button @click="sub(index)">-</button>
                 </p>
                 <span>{{item.num*item.price}}</span>
