@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-focus>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    // 全局指令
+    Vue.directive(
+      "focus",{
+        bind:function (el,binding,vnode) {
+          console.log(el);
+          console.log(binding);
+          console.log(vnode);
+        },
+        inserted:function(el){
+          el.focus();
+        }
+      }
+    )
+    new Vue({
+      el: '#app',
+      //局部指令
+      // //钩子函数 绑定元素时执行
+      // directives: {
+      //   "focus": {
+      //     //绑定时执行一次
+      //     bind: function (el, binding, vnode) {
+      //       console.log(el);
+      //       console.log(binding);
+      //       console.log(vnode);
+      //     },
+      //     //绑定元素插入父元素时调用
+      //     inserted: function (el) {
+      //       el.focus();
+      //     }
+
+      //   }
+      // }
+
+    }) 
+  </script>
+</body>
+
+</html>

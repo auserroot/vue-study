@@ -1,30 +1,32 @@
 <template>
-  <input type="text" v-focus>
+  <div id="app">
+    <input type="text" v-focus>
+  </div>
 </template>
 
 <script>
+// import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  data:function(){
-    return{
-      msg:1
-    }
-  },
-  //自定义指令
+  // components: {
+  //   HelloWorld
+  // }
+  
+  //钩子函数 绑定元素时执行
   directives:{
     "focus":{
-      bain:function(el,binding,vnode){
-        console.log(el)
-        console.log(binding)
-        console.log(vnode)
+      //绑定时执行一次
+      bind:function(el,binding,vnode){
+        console.log(el);
+        console.log(binding);
+        console.log(vnode);
       },
-      inserted(el,binding,vnode){
-        console.log(el)
-        console.log(binding)
-        console.log(vnode)
-        el.focus();//聚焦事件
+      //绑定元素插入父元素时调用
+      inserted:function(el){
+        el.focus();
       }
+
     }
   }
 }
