@@ -14,72 +14,124 @@
             <ul>
                 <li v-for="(item, index) in items" :key="item.id">
                     <div class="warp">
-                        <input type="checkbox" class="Checkbox" id="check">
+                        <input type="checkbox" v-model="item.checked" class="Checkbox" id="check">
                     </div>
-                    <span v-text="item.todo" :class="{line}"></span>
+                    <span v-text="item.todo" :class="{line:item.checked}"></span>
                     <b @click="close(index)">X</b>
+                    <!-- 点击切换组件 -->
+                    <!-- <component :is="currentTabComponent"></component> -->
                 </li>
             </ul>
+            
             <p>
                 <span>{{items.length|txtfilter}}</span> 
-                <button>ALL</button>
-                <button>ACTIVE</button>
-                <button>COMPLETED</button>
+                <button :class="{ u_line: addclass == 'all' }" @click="all">all</button>
+                <button :class="{ u_line: addclass == 'active' }"  @click="active">active</button>
+                <button :class="{ u_line: addclass == 'checked' }"  @click="checked">checked</button>
+                <button class="btn0" @click="clear" v-show="items.length > reldone">CLEAR</button>
             </p>
         </div>
     </div>
     <script src="./vue.js"></script>
     <script>
         //将input输入值存储到本地存储中
-        var STORAGE_KEY = "todos";
             var todoStorage = {
                 get() {
-                    var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+                    var todos = JSON.parse(localStorage.getItem(todos) || "[]");
                     todos.forEach(function (todo, index) {
                         // todo.id=index;
                         todo.id = Date.now();
+                        todo.checked=false;
                     });
                     // todoStorage.uid = items.length;
                     return todos;
                 },
                 save(todos) {
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+                    localStorage.setItem("todos", JSON.stringify(todos));
                 }
             };
+            //页面关闭清空本地存储
+            window._onbeforeunload = function () {
+                    localStorage.removeItem("todos")
+                };
+
+            var checkbtn = {
+                    all:function(items) {
+                        return items;
+                    },
+                    active:function(items) {
+                        return items.filter(function (item) {
+                            return !item.checked;
+                        });
+                    },
+                    checked:function(items) {
+                        return items.filter(function (item) {
+                            return item.checked;
+                        });
+                    }
+                };
 
         new Vue({
-            el:"#app",
-            data:{
-                val:"",
-                items:todoStorage.get()
-            },
-            //监视器 input值变化
-            watch:{
-                items:{
-                    handler(todos){
-                        todoStorage.save(todos);
+                el: "#app",
+                data: {
+                    val: "",
+                    items: todoStorage.get(),
+                    addclass:"all"
+                },
+                //监视器
+                watch: {
+                    items: {
+                        handler(todos) {
+                            todoStorage.save(todos);
+                        },
+                        deep: true
                     }
-                }
-            },
-            //过滤器
-            filters: {
-                txtfilter(v) {
-                    return v + " "+ "item left";
-                }
-            },
-            methods: {
+                },
+                //过滤器
+                filters: {
+                    txtfilter(v) {
+                        return v + " " + "item left";
+                    }
+                },
+                //自定义指令
+                directives: {
+                    "focus":{
+                        inserted: function (el) {
+                            el.focus();
+                        }
+                    }
+                },
+
+
+                methods: {
                 add(){
                     this.items.push({todo:this.val,id:Date.now()});
                     // console.log(this.val)
                     // console.log(this.items)
-                    this.val=""
-                },
-                close(index){
-                    this.items.splice(index,1);
-                }
-            },
+                        this.val = ""
+                    },
+                    checkitem(index) {
+                        return this.items[index].checked = !this.items[index].checked;
+                    },
+                    close(index) {
+                        this.items.splice(index, 1);
+                    },
+                    clear() {
+                        this.items = checkbtn.active(this.items);
+                    },
 
-        })
+                    //选中样式
+                    all() {
+                        this.addclass = "all";
+                    },
+                    active() {
+                        this.addclass = "active";
+                    },
+                    checked() {
+                        this.addclass = "checked";
+                    }
+                },
+            })
     </script>
 </body>
 </html>

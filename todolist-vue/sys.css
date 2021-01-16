@@ -126,3 +126,12 @@ p button{
     background: #fff;
     margin:0 10px;
 }
+p .btn0{
+    margin-left: 70px;
+}
+.line{
+    text-decoration:line-through;
+}
+.u_line{
+    border:2px solid rgba(175, 47, 47, 0.2);
+}
