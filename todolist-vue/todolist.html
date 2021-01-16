@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODOLIST</title>
+    <link rel="stylesheet" href="./sys.css">
+</head>
+<body>
+    <div id="app">
+        <h1>todos</h1>
+        <div class="box">
+            <input type="text" placeholder="What needs to be done?" v-model="val" @keydown.enter="add">
+            <ul>
+                <li v-for="(item, index) in items" :key="item.id">
+                    <div class="warp">
+                        <input type="checkbox" class="Checkbox" id="check">
+                    </div>
+                    <span v-text="item.todo" :class="{line}"></span>
+                    <b @click="close(index)">X</b>
+                </li>
+            </ul>
+            <p>
+                <span>{{items.length|txtfilter}}</span> 
+                <button>ALL</button>
+                <button>ACTIVE</button>
+                <button>COMPLETED</button>
+            </p>
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        //将input输入值存储到本地存储中
+        var STORAGE_KEY = "todos";
+            var todoStorage = {
+                get() {
+                    var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+                    todos.forEach(function (todo, index) {
+                        // todo.id=index;
+                        todo.id = Date.now();
+                    });
+                    // todoStorage.uid = items.length;
+                    return todos;
+                },
+                save(todos) {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+                }
+            };
+
+        new Vue({
+            el:"#app",
+            data:{
+                val:"",
+                items:todoStorage.get()
+            },
+            //监视器 input值变化
+            watch:{
+                items:{
+                    handler(todos){
+                        todoStorage.save(todos);
+                    }
+                }
+            },
+            //过滤器
+            filters: {
+                txtfilter(v) {
+                    return v + " "+ "item left";
+                }
+            },
+            methods: {
+                add(){
+                    this.items.push({todo:this.val,id:Date.now()});
+                    // console.log(this.val)
+                    // console.log(this.items)
+                    this.val=""
+                },
+                close(index){
+                    this.items.splice(index,1);
+                }
+            },
+
+        })
+    </script>
+</body>
+</html>
