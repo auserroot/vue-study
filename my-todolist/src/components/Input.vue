@@ -63,6 +63,7 @@ methods: {
     input{
         width: 480px;
         height: 100%;
+        font-size: 40px;
         border: none;
         outline: none;
     }

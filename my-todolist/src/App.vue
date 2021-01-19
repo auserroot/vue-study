@@ -5,7 +5,7 @@
     <div v-for="(item,index) in Showitems"  :key="item.id">
       <todo-content :item="item" :index = "index" @Remove="del"></todo-content>
     </div>
-    <todo-footer :items="items"   @showItems='Showitem' @clearItem="clear"></todo-footer>
+    <todo-footer :items="items"   @showItems='Showitem'  @clearItem="clear"></todo-footer>
   </div>
 </template>
 
@@ -13,8 +13,10 @@
 import Header from './components/Header'
 import Input from './components/Input'
 import Content from './components/Content'
-import Footer from './components/Footer'
+import Footer from './components/Footer' 
+
 export default {
+ 
   name: 'App',
   components: {
     'todo-header':Header,
@@ -69,7 +71,7 @@ export default {
     },
     sALL(){
         this.items.filter(i=>{
-        i.done=true
+        i.done=!i.done
       })
     },
     del(index){
@@ -77,16 +79,14 @@ export default {
     },
 
     clear(){
-      this.items.filter(v=>{
-        if(v.done){
-          return !v.done
-        }
+      this.items =  this.items.filter(v=>{
+        return !v.done
       })
     },
 
-     Showitem(listitem){
-       this.tab=listitem   
-     },
+    Showitem(listitem){
+      this.tab=listitem   
+    },
 
   }
 }
