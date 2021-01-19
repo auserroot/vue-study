@@ -1,7 +1,7 @@
 <!-- header -->
 <template>
 <div>
-    <span @click="selectall">﹀</span>
+    <span @click="selectall" title="点击全选/取消">﹀</span>
     <input type="text" v-focus v-model="val" placeholder="what noodes to be done?" @keydown.enter="additem">
 </div>
 </template>
