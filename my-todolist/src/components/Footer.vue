@@ -2,7 +2,7 @@
 <template>
 <div>
     <span>{{items.length|itemfliter}}</span>
-    <button v-for="(v,index) in list" :key="index"  @click="showitem(index)">{{v}}</button>
+    <button v-for="(v,index) in list" :key="index" :class="{u_line:addclass==v}"  @click="showitem(index)">{{v}}</button>
     <button class="btn0" @click="clearitem" v-show="items.length > 0">clearCompleted</button>
 </div>
 </template>
@@ -12,13 +12,13 @@
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
-props:['items','list'],
+props:['items'],
 data() {
 //这里存放数据
 return {
-    // addclass:"All",
-    // list:['All','Active','Completed'],
-};
+    addclass:"All",
+    list:['All','Active','Completed'],
+}
 },
 //监听属性 类似于data概念
 computed: {},
@@ -32,8 +32,16 @@ itemfliter(v) {
 },
 //方法集合
 methods: {
-    showitem(){
-        this.$emit('showItems')
+    showitem(index){
+        this.$emit('showItems',this.list[index]);
+        if(this.list[index]=='All'){
+            this.addclass = "All";
+
+        }else if(this.list[index]=='Active'){
+            this.addclass = "Active";
+        }else if(this.list[index]=='Completed'){
+            this.addclass = "Completed";
+        }
     },
     clearitem(){
         this.$emit('clearItem')
@@ -70,6 +78,9 @@ div button{
 }
 div .btn0{
     margin-left: 70px;
+    cursor: pointer;
 }
-
+.u_line{
+  border:2px solid rgba(175, 47, 47, 0.2);
+}
 </style>

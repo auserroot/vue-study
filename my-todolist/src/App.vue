@@ -5,7 +5,7 @@
     <div v-for="(item,index) in Showitems"  :key="item.id">
       <todo-content :item="item" :index = "index" @Remove="del"></todo-content>
     </div>
-    <todo-footer :items="items" :list='list' :class="{u_line:addclass==this.list[index]}" @showItems='Showitem' @clearItem="clear"></todo-footer>
+    <todo-footer :items="items"   @showItems='Showitem' @clearItem="clear"></todo-footer>
   </div>
 </template>
 
@@ -23,26 +23,22 @@ export default {
     'todo-footer':Footer
   },
   computed:{
-    Showitems(list){
-      if(list=='ALL'){
+    Showitems(){
+      if(this.tab==='All'){
           return this.items
-      }else if(list=='Active'){
-        this.items.filter((v)=>{
+      }else if(this.tab==='Active'){
+        return this.items.filter((v)=>{
           return !v.done
         })
-      }else if(list=='Active'){
-        this.items.filter((v)=>{
+      }else if(this.tab==='Completed'){
+        return this.items.filter((v)=>{
           return v.done
         })
-      }else{
-        return this.items
       }
     },
   },
   data() {
     return {
-      addclass:"All",
-      list:['All','Active','Completed'],
       items:[
       {
         id:0,
@@ -59,7 +55,8 @@ export default {
         txt:'打豆豆',
         done:false
       },
-      ]
+      ],
+      tab:'All'
     };
   },
   methods: {
@@ -87,35 +84,10 @@ export default {
       })
     },
 
-     Showitem(list){
-      if(list=='ALL'){
-          return this.items
-      }else if(list=='Active'){
-        this.items.filter((v)=>{
-          return !v.done
-        })
-      }else if(list=='Active'){
-        this.items.filter((v)=>{
-          return v.done
-        })
-      }
+     Showitem(listitem){
+       this.tab=listitem   
      },
 
-
-
-     
-
-
-    //选中样式
-    All() {
-        this.addclass = "All";
-    },
-    Active() {
-        this.addclass = "Active";
-    },
-    Completed() {
-        this.addclass = "Completed";
-    }
   }
 }
 </script>
@@ -130,7 +102,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.u_line{
-  border:2px solid rgba(175, 47, 47, 0.2);
-}
+
 </style>
