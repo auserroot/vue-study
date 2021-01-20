@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/news">news</router-link>
+        <router-link to="/map">map</router-link>
+        <!-- //路由的出口 -->
+        <router-view></router-view>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+    <script>
+        const Maps = {
+            template:`<h1>地图</h1>`,
+        };
+        //vue-router 配置项
+        const routes = [{
+            path:"/map",
+            component : Maps,//组件
+        }];
+
+        const router = new VueRouter({
+            routes,//routers:routers
+        });
+
+        new Vue({
+            el:'#app',
+            router
+        })
+    </script>
+</body>
+</html>

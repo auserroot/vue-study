@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#news">新闻</a>
+    <a href="#map">地图</a>
+    <div class="txt"></div>
+    <script>
+        var txt = document.querySelector('.txt');
+        window.addEventListener('hashchange',function(e){
+            // console.log(e)
+            // console.log(window.history)
+            // console.log(window.location)
+            // console.log(window.location.hash)
+            var hash = window.location.hash
+            // console.log(hash.split("#")[1])
+            // console.log(hash.slice(1))
+            var hashValue=hash.slice(1)
+            //点击a标签显示相对应的hash
+            switch(hashValue){
+                case 'news': txt.innerHTML='news'
+                break;
+                case 'map' : txt.innerHTML='map'
+                break
+            }
+        })
+
+    </script>
+</body>
+</html>
