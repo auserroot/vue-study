@@ -16,7 +16,8 @@ export default {
     // 编程式路由
     toother(){
       this.$router.history.push({
-        path:'/other'
+        path:'/other/:id',
+        params:{uid:'123'}//传入id 123
       })
     }
   },

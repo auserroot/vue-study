@@ -19,14 +19,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path:'/other',
+    path:'/other/:id',
     name:'other',
-    component:()=>import('../components/other.vue')
+    component:()=>import('../components/other.vue'),
+    props:true
   },
   {
     path: '/404',
     name: 'notfoundpage',
-    component:() => import('../components/notfoundpage.vue')
+    component:() => import('../components/notfoundpage.vue'),
   },
   {
     path:'*',
