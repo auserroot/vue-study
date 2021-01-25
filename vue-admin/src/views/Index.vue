@@ -240,8 +240,14 @@ export default {
       }
       let day = time.getDate();
       console.log(year, month, day);
-      //   let datetime = year + "-" + month + "-" + day;
-      //   this.date = datetime;
+      for (let i = 7; i >= 0; i--) {
+        let datetime = year + "-" + month + "-" + day;
+        this.date[i] = datetime;
+        day--;
+        console.log(this.date);
+      }
+      // let datetime = year + "-" + month + "-" + day;
+      // this.date = datetime;
       console.log(this.date);
       //   this.$http.get("statis/user/:date/count", {
       //     date: this.date,
