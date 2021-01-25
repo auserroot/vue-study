@@ -8,10 +8,23 @@ export default {
   //import引入的组件需要注入到对象中才能使用
   name: "Echarts",
   components: {},
-  props: ["date", "customer", "order", "admin"],
+  // props: ["date", "customer", "order", "admin"],
   data() {
     //这里存放数据
-    return {};
+    return {
+      date: [
+        "2021-01-19",
+        "2021-01-20",
+        "2021-01-21",
+        "2021-01-22",
+        "2021-01-23",
+        "2021-01-24",
+        "2021-01-25",
+      ],
+      customer: [0, 7, 20, 38, 25, 4, 1],
+      order: [10, 7, 30, 32, 25, 4, 1],
+      admin: [12, 16, 20, 30, 10, 2, 0],
+    };
   },
   //监听属性 类似于data概念
   computed: {},

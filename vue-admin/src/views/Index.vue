@@ -186,10 +186,6 @@ export default {
           },
         },
       ],
-      date: [],
-      customer: [],
-      order: [],
-      admin: [],
     };
   },
   //监听属性 类似于data概念
@@ -230,29 +226,29 @@ export default {
     },
   },
   mounted() {
-    window.onload = function () {
-      console.log(1);
-      let time = new Date();
-      let year = time.getFullYear();
-      let month = time.getMonth() + 1;
-      if (month < 10) {
-        month = "0" + month;
-      }
-      let day = time.getDate();
-      console.log(year, month, day);
-      for (let i = 7; i >= 0; i--) {
-        let datetime = year + "-" + month + "-" + day;
-        this.date[i] = datetime;
-        day--;
-        console.log(this.date);
-      }
-      // let datetime = year + "-" + month + "-" + day;
-      // this.date = datetime;
-      console.log(this.date);
-      //   this.$http.get("statis/user/:date/count", {
-      //     date: this.date,
-      //   });
-    };
+    // window.onload = function () {
+    //   console.log(1);
+    //   let time = new Date();
+    //   let year = time.getFullYear();
+    //   let month = time.getMonth() + 1;
+    //   if (month < 10) {
+    //     month = "0" + month;
+    //   }
+    //   let day = time.getDate();
+    //   console.log(year, month, day);
+    //   for (let i = 7; i >= 0; i--) {
+    //     let datetime = year + "-" + month + "-" + day;
+    //     this.date[i] = datetime;
+    //     day--;
+    //     console.log(this.date);
+    //   }
+    //   // let datetime = year + "-" + month + "-" + day;
+    //   // this.date = datetime;
+    //   console.log(this.date);
+    //   //   this.$http.get("statis/user/:date/count", {
+    //   //     date: this.date,
+    //   //   });
+    // };
   },
 };
 </script>
