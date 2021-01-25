@@ -101,8 +101,11 @@ export default {
           .then((res) => {
             console.log(res);
             if (res.status == "1") {
+              // vuex 同步修改 状态中的数据
+              this.$store.commit("LOGIN", res.status);
+
               //跳转页面
-              this.$router.history.push({
+              this.$router.push({
                 path: "/index",
               });
             }

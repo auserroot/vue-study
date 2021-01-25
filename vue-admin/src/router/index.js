@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'Login',
-    component: Login
+    component: Login,
   },
   {
     path: '/index',
@@ -17,18 +17,22 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Index.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Index.vue'),
   }
 ]
 
 const router = new VueRouter({
+  mode:'history',
+  base: process.env.BASE_URL,
   routes
 });
 
-
+//全局守卫
 router.beforeEach((to,from,next)=>{
-  console.log(from)
-  if (to.path === '/'||store.state.status===1) {
+  // console.log(from)
+  // console.log(store)
+  // console.log(to)
+  if (store.state.status === 1||to.path === '/') {
     next()
   } else {
     next("/")
