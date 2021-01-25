@@ -102,6 +102,9 @@ export default {
             console.log(res);
             if (res.status == "1") {
               //跳转页面
+              this.$router.history.push({
+                path: "/index",
+              });
             }
           });
       });
